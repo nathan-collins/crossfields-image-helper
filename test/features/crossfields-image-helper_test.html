@@ -34,12 +34,14 @@
           crossfieldsImageHelper.totalHelpers = 2;
           crossfieldsImageHelper.icon = "apple.png";
           crossfieldsImageHelper.imagePath = "icons"
+          crossfieldsImageHelper.label = "Apples";
 
           flush(function() {
             var images = crossfieldsImageHelper.querySelectorAll('iron-icon');
             assert.equal(images.length, 2);
             var image = images[0];
             expect(image).to.have.property('src').to.equal('/icons/apple.png');
+            expect(image).to.have.property('alt').to.equal('Apple');
             done();
           });
         });
@@ -55,6 +57,10 @@
             expect(label.innerText).to.equal('2 Apples');
             done();
           });
+        });
+
+        test('correct singular alt is displayed', function() {
+
         });
       });
     </script>

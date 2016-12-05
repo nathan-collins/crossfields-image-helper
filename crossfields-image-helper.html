@@ -21,7 +21,7 @@ Image helper for mathematic displays, blogs or articles.
           <iron-icon icon="{{icon}}"></iron-icon>
         </template>
         <template is="dom-if" if="{{_handleIcon(icon)}}">
-          <iron-icon src="/{{imagePath}}/{{icon}}"></iron-icon>
+          <iron-icon src="/{{imagePath}}/{{icon}}" title="[[_computeHelperLabel(label)]]"></iron-icon>
         </template>
       </template>
       <h4 id="helperLabel"><span>[[_computeHelperLabel(label, totalHelpers)]]</span></h4>

@@ -32,6 +32,9 @@ Polymer({
   },
 
   _computeHelperLabel: function(label, totalHelpers) {
+    if(!totalHelpers) {
+      return pluralize(label, 1);
+    }
     return pluralize(label, totalHelpers, true);
   },
 
