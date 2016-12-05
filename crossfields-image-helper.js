@@ -18,15 +18,6 @@ Polymer({
 
     imagePath: {
       type: String
-    },
-
-    isIcon: {
-      type: Boolean,
-      value: false
-    },
-    isImage: {
-      type: Boolean,
-      value: false
     }
   },
 
