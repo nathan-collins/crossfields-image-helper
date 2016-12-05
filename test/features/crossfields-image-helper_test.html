@@ -41,7 +41,7 @@
             assert.equal(images.length, 2);
             var image = images[0];
             expect(image).to.have.property('src').to.equal('/icons/apple.png');
-            expect(image).to.have.property('alt').to.equal('Apple');
+            expect(image).to.have.property('title').to.equal('Apple');
             done();
           });
         });
