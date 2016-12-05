@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>crossfields-image-helper test</title>
+
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../crossfields-image-helper.html">
+  </head>
+  <body>
+    <test-fixture id="crossfields-image-helper-fixture">
+      <template>
+        <crossfields-image-helper></crossfields-image-helper>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('crossfields-image-helper', function() {
+        var crossfieldsImageHelper;
+
+        setup(function() {
+          crossfieldsImageHelper = fixture('crossfields-image-helper-fixture');
+        });
+
+        test('instantiating the element works', function() {
+          assert.equal(crossfieldsImageHelper.is, 'crossfields-image-helper');
+        });
+
+        test('multiple images should be displayed', function(done) {
+          crossfieldsImageHelper.totalHelpers = 2;
+          crossfieldsImageHelper.icon = "apple.png";
+          crossfieldsImageHelper.imagePath = "icons"
+
+          flush(function() {
+            var images = crossfieldsImageHelper.querySelectorAll('iron-icon');
+            assert.equal(images.length, 2);
+            var image = images[0];
+            expect(image).to.have.property('src').to.equal('/icons/apple.png');
+            done();
+          });
+        });
+
+        test('label return correct value', function(done) {
+          crossfieldsImageHelper.totalHelpers = 2;
+          crossfieldsImageHelper.icon = "apple.png";
+          crossfieldsImageHelper.label = "Apples";
+          crossfieldsImageHelper.imagePath = "/icons"
+
+          flush(function() {
+            var label = crossfieldsImageHelper.querySelector('#helperLabel');
+            expect(label.innerText).to.equal('2 Apples');
+            done();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

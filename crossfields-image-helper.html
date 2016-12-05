@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+
+<!--
+`crossfields-image-helper`
+Image helper for mathematic displays, blogs or articles.
+
+@demo demo/index.html
+-->
+
+<dom-module id="crossfields-image-helper">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div id="imageHelper">
+      <template is="dom-repeat" items="{{_toArray(totalHelpers)}}">
+        <template is="dom-if" if="{{!_handleIcon(icon)}}">
+          <iron-icon icon="{{icon}}"></iron-icon>
+        </template>
+        <template is="dom-if" if="{{_handleIcon(icon)}}">
+          <iron-icon src="/{{imagePath}}/{{icon}}"></iron-icon>
+        </template>
+      </template>
+      <h4 id="helperLabel"><span>[[_computeHelperLabel(label, totalHelpers)]]</span></h4>
+    </div>
+  </template>
+
+  <script src="crossfields-image-helper.js"></script>
+  <script src="/bower_components/pluralize/pluralize.js"></script>
+</dom-module>

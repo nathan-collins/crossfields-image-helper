@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>crossfields-image-helper test</title>
+
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../crossfields-image-helper.html">
+  </head>
+  <body>
+    <test-fixture id="crossfields-image-helper-fixture">
+      <template>
+        <crossfields-image-helper></crossfields-image-helper>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('crossfields-image-helper', function() {
+        var crossfieldsImageHelper;
+
+        setup(function() {
+            crossfieldsImageHelper = fixture('crossfields-image-helper-fixture');
+        });
+
+        test('instantiating the element works', function() {
+          assert.equal(crossfieldsImageHelper.is, 'crossfields-image-helper');
+        });
+
+        test('number converted to an array', function() {
+            var items = crossfieldsImageHelper._toArray(2);
+            assert.equal(items.length, 2);
+        });
+
+        test('correct label is returned', function() {
+            var label = crossfieldsImageHelper._computeHelperLabel('dogs', 2);
+            assert.equal(label, '2 dogs');
+        });
+
+        test('image is an iron icon', function() {
+            var icon = crossfieldsImageHelper._handleIcon('icons:content-cut');
+            expect(icon).to.be.false;
+        });
+      });
+    </script>
+  </body>
+</html>
